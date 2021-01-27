@@ -1,0 +1,30 @@
+<div>
+  <div [formGroup]="form" style="width: auto; float: left;">
+    <div [ngSwitch]="question.controlType">
+      <!-- Text box -->
+      <mat-form-field *ngSwitchCase="'textbox'">
+        <mat-label>{{question.label}}</mat-label>
+        <input 
+        matInput 
+        placeholder="Input" 
+        [id]="question.key" 
+        [type]="question.type" 
+        [formControlName]="question.key">
+      </mat-form-field>
+      <!-- Select List -->
+      <mat-form-field *ngSwitchCase="'dropdown'">
+        <mat-label>{{question.label}}</mat-label>
+        <mat-select [formControlName]="question.key">
+          <mat-option *ngFor="let opt of question.options" [value]="opt.key">
+            {{opt.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div> 
+    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+  </div>
+  <div style="float: right;">
+    {{question.label}} <p></p>
+    {{this.form.controls[question.key].value}}
+  </div>
+</div>
