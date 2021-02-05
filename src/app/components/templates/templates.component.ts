@@ -19,7 +19,7 @@ export class TemplatesComponent implements OnInit {
     private route: ActivatedRoute,
     private service: QuestionService
   ) {
-    this.questions$ = service.getQuestions();
+    this.questions$ = service.getQuestionArray();
   }
 
   ngOnInit(): void {

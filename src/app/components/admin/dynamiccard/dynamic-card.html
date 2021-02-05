@@ -1,0 +1,9 @@
+<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" *ngFor="let question of questions" cdkDragLockAxis="y" cdkDrag>
+    <div class="card-header">{{question.controlType}}</div>
+    <div class="card-body">
+      <h5 class="card-title">{{question.label}}</h5>
+      <p class="card-text">{{question.order}}</p>
+    </div>
+  </div>
+</div>

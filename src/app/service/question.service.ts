@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DropdownQuestion } from '../models/question-dropdown';
 import { QuestionBase } from '../models//question-base';
 import { TextboxQuestion } from '../models//question-textbox';
+import { QUARRAY } from './mock-questions'
 import { of } from 'rxjs';
 
 @Injectable()
@@ -49,6 +50,11 @@ export class QuestionService {
       }),
     );
 
+    return of(this.questions.sort((a, b) => a.order - b.order));
+  }
+
+  getQuestionArray(){
+    this.questions = QUARRAY;
     return of(this.questions.sort((a, b) => a.order - b.order));
   }
 }

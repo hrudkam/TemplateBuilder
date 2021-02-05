@@ -1,12 +1,13 @@
 export class QuestionBase<T> {
-  value: T;
+  value?: T;
   key: string;
   label: string;
   required: boolean;
   order: number;
   controlType: string;
-  type: string;
-  options: {key: string, value: string}[];
+  type?: string;
+  options?: {key: string, value: string}[];
+  placeholder?: string; 
 
   constructor(options: {
       value?: T;
@@ -17,6 +18,7 @@ export class QuestionBase<T> {
       controlType?: string;
       type?: string;
       options?: {key: string, value: string}[];
+      placeholder?: string; 
     } = {}) {
     this.value = options.value;
     this.key = options.key || '';
@@ -24,7 +26,8 @@ export class QuestionBase<T> {
     this.required = !!options.required;
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType || '';
-    this.type = options.type || '';
+    this.type = options.type|| '';
     this.options = options.options || [];
+    this.placeholder = options.placeholder
   }
 }

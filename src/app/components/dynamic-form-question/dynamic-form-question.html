@@ -2,17 +2,18 @@
   <div [formGroup]="form" style="width: auto; float: left;">
     <div [ngSwitch]="question.controlType">
       <!-- Text box -->
-      <mat-form-field *ngSwitchCase="'textbox'">
+      <mat-form-field *ngSwitchCase="'textbox'" appearance="outline">
         <mat-label>{{question.label}}</mat-label>
         <input 
         matInput 
         placeholder="Input" 
         [id]="question.key" 
         [type]="question.type" 
-        [formControlName]="question.key">
+        [formControlName]="question.key"
+        [placeholder]="question.placeholder">
       </mat-form-field>
       <!-- Select List -->
-      <mat-form-field *ngSwitchCase="'dropdown'">
+      <mat-form-field *ngSwitchCase="'dropdown'" appearance="outline">
         <mat-label>{{question.label}}</mat-label>
         <mat-select [formControlName]="question.key">
           <mat-option *ngFor="let opt of question.options" [value]="opt.key">
@@ -21,7 +22,7 @@
         </mat-select>
       </mat-form-field>
     </div> 
-    <div class="errorMessage" *ngIf="!isValid">{{question.label}} is required</div>
+    <div class="errorMessage" *ngIf="!isValid">{{question.key}} is required</div>
   </div>
   <div style="float: right;">
     {{question.label}} <p></p>
